@@ -11,7 +11,7 @@ services:
         - UID=${UID:-1000}
         - GID=${GID:-1000}
     ports:
-      - "80:80"
+      - "90:80"
     volumes:
       - ./app:/var/www/html:delegated
     depends_on:
@@ -28,7 +28,7 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "3306:3306"
+      - "3316:3306"
     environment:
       MYSQL_DATABASE: php_docker
       MYSQL_USER: homestead
@@ -49,7 +49,7 @@ services:
         - UID=${UID:-1000}
         - GID=${GID:-1000}
     ports:
-      - "9000:9000"
+      - "9010:9000"
     volumes:
       - ./app:/var/www/html:delegated
     networks:
@@ -59,7 +59,7 @@ services:
   #   image: redis:alpine
   #   restart: unless-stopped
   #   ports:
-  #     - "6379:6379"
+  #     - "6389:6379"
   #   networks:
   #     - php-docker
 
@@ -81,8 +81,8 @@ services:
   # mailhog:
   #   image: mailhog/mailhog:latest
   #   ports:
-  #     - "1025:1025"
-  #     - "8025:8025"
+  #     - "1035:1025"
+  #     - "8035:8025"
   #   networks:
   #     - php-docker
 
@@ -90,7 +90,7 @@ services:
     image: 'phpmyadmin:latest'
     restart: always
     ports:
-      - '${PHPMYADMIN_PORT:-8080}:80'
+      - '${PHPMYADMIN_PORT:-8090}:80'
     networks:
       - php-docker
     environment:
